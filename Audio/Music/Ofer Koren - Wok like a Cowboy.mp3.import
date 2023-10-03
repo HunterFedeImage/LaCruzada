@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bn10u0lx4l5jl"
+path="res://.godot/imported/Ofer Koren - Wok like a Cowboy.mp3-c56383a8ac4f87cba68d03240765875d.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/Ofer Koren - Wok like a Cowboy.mp3"
+dest_files=["res://.godot/imported/Ofer Koren - Wok like a Cowboy.mp3-c56383a8ac4f87cba68d03240765875d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

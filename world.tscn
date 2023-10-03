@@ -1,0 +1,229 @@
+[gd_scene load_steps=15 format=3 uid="uid://octhqw5xr0sk"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_51ibp"]
+[ext_resource type="PackedScene" uid="uid://2vvt3kvahn4h" path="res://SanMartin.tscn" id="1_apu6q"]
+[ext_resource type="Script" path="res://Platforms.gd" id="1_qcx1g"]
+[ext_resource type="PackedScene" uid="uid://vnq7x20rqm7y" path="res://platform.tscn" id="2_nk4gb"]
+[ext_resource type="Texture2D" uid="uid://bqvtxqfwq2ls2" path="res://Assets/Cloud.png" id="3_mn7py"]
+[ext_resource type="Texture2D" uid="uid://c8qjro157t4gu" path="res://Assets/mountains3.jpg" id="5_4mp38"]
+[ext_resource type="Script" path="res://ToLevel2.gd" id="6_0emaw"]
+[ext_resource type="Script" path="res://RestarScene.gd" id="7_6fr85"]
+[ext_resource type="Script" path="res://UI/PauseControl.gd" id="8_csnij"]
+[ext_resource type="AudioStream" uid="uid://b0teaot8xxuid" path="res://Audio/Music/Ace - Terra Firma.mp3" id="10_11cvu"]
+[ext_resource type="Script" path="res://HUD.gd" id="10_pkw50"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pll2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8h1x"]
+size = Vector2(938, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ne38e"]
+size = Vector2(74, 1602)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_51ibp")
+
+[node name="Platforms" type="Node2D" parent="."]
+position = Vector2(720, 696)
+scale = Vector2(1, 1.00715)
+script = ExtResource("1_qcx1g")
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("2_nk4gb")]
+position = Vector2(40, -468.649)
+
+[node name="Platform11" parent="Platforms" instance=ExtResource("2_nk4gb")]
+position = Vector2(-16, -15.8864)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("2_nk4gb")]
+position = Vector2(-368, -293.899)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("2_nk4gb")]
+position = Vector2(48, -214.467)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("2_nk4gb")]
+position = Vector2(-544, -95.3184)
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("2_nk4gb")]
+position = Vector2(-344, 548.081)
+
+[node name="Platform9" parent="Platforms" instance=ExtResource("2_nk4gb")]
+position = Vector2(-208, 182.694)
+
+[node name="Platform10" parent="Platforms" instance=ExtResource("2_nk4gb")]
+position = Vector2(-552, 341.558)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("2_nk4gb")]
+position = Vector2(-120, 722.832)
+scale = Vector2(1, 0.985862)
+
+[node name="SanMartin" parent="." instance=ExtResource("1_apu6q")]
+position = Vector2(608, 1232)
+scale = Vector2(0.347756, 0.347756)
+
+[node name="Area2D" type="Area2D" parent="SanMartin"]
+position = Vector2(-69.0139, 1472.3)
+scale = Vector2(184.187, 6.88083)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SanMartin/Area2D"]
+shape = SubResource("RectangleShape2D_6pll2")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="MountainParalax" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MountainParalax"]
+scale = Vector2(1.16688, 1.23254)
+texture = ExtResource("5_4mp38")
+centered = false
+
+[node name="Cloud" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Cloud"]
+texture_filter = 1
+position = Vector2(72.0001, 304)
+scale = Vector2(0.188998, 0.188998)
+texture = ExtResource("3_mn7py")
+centered = false
+
+[node name="NextLevelCollider" type="Area2D" parent="."]
+position = Vector2(72, 0)
+scale = Vector2(0.840001, 1)
+script = ExtResource("6_0emaw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevelCollider"]
+position = Vector2(467, 43)
+shape = SubResource("RectangleShape2D_q8h1x")
+
+[node name="RestarCollider" type="Area2D" parent="."]
+position = Vector2(72, 1520)
+scale = Vector2(0.843556, 0.899783)
+script = ExtResource("7_6fr85")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RestarCollider"]
+position = Vector2(467, 43)
+shape = SubResource("RectangleShape2D_q8h1x")
+
+[node name="PauseControl" type="Node2D" parent="."]
+script = ExtResource("8_csnij")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("10_pkw50")
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pause" type="Button" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.308642
+anchor_top = -0.0416667
+anchor_right = -0.308642
+anchor_bottom = -0.0416667
+offset_left = 696.0
+offset_top = 96.0
+offset_right = 726.0
+offset_bottom = 127.0
+grow_horizontal = 0
+scale = Vector2(3.97399, 3.03843)
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "| |"
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" type="Control" parent="HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 288.0
+offset_top = 656.0
+offset_right = 328.0
+offset_bottom = 696.0
+
+[node name="ColorRect" type="ColorRect" parent="HUD/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.32549)
+
+[node name="Control" type="Control" parent="HUD/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD/PauseMenu/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD/PauseMenu/Control/CenterContainer"]
+custom_minimum_size = Vector2(280, 400)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PauseMenu/Control/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PauseMenu/Control/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="Label" type="Label" parent="HUD/PauseMenu/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PAUSE"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HUD/PauseMenu/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="HUD/PauseMenu/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "RESUME"
+
+[node name="MainMenu" type="Button" parent="HUD/PauseMenu/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "MAIN MENU"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_11cvu")
+autoplay = true
+bus = &"Music"
+
+[node name="Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(27, 791)
+shape = SubResource("RectangleShape2D_ne38e")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(880, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+position = Vector2(27, 791)
+shape = SubResource("RectangleShape2D_ne38e")
+
+[connection signal="body_entered" from="SanMartin/Area2D" to="SanMartin" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="NextLevelCollider" to="NextLevelCollider" method="_on_body_entered"]
+[connection signal="body_entered" from="RestarCollider" to="RestarCollider" method="_on_body_entered"]
+[connection signal="pressed" from="HUD/Control/Pause" to="HUD" method="_on_pause_pressed"]
+[connection signal="pressed" from="HUD/PauseMenu/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Resume" to="HUD" method="_on_resume_pressed"]
+[connection signal="pressed" from="HUD/PauseMenu/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MainMenu" to="HUD" method="_on_main_menu_pressed"]

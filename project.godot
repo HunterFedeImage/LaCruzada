@@ -1,0 +1,40 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="La Cruzada"
+run/main_scene="res://world.tscn"
+config/features=PackedStringArray("4.1", "Mobile")
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
+boot_splash/image="res://Assets/Splash.png"
+config/icon="res://icon.svg"
+boot_splash/minimum_display_time=1
+
+[autoload]
+
+Global="*res://Global.gd"
+
+[display]
+
+window/size/viewport_width=648
+window/size/viewport_height=1152
+window/size/window_width_override=648
+window/size/window_height_override=1152
+window/stretch/mode="canvas_items"
+window/canvas_textures/default_texture_filter=1
+window/minimum_display_time=1
+window/use_filter=true
+window/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"

@@ -1,0 +1,247 @@
+[gd_scene load_steps=16 format=3 uid="uid://bjupuqvbx6ft0"]
+
+[ext_resource type="Script" path="res://Platforms.gd" id="1_e6wb0"]
+[ext_resource type="PackedScene" uid="uid://vnq7x20rqm7y" path="res://platform.tscn" id="2_01url"]
+[ext_resource type="PackedScene" uid="uid://2vvt3kvahn4h" path="res://SanMartin.tscn" id="3_4r2hi"]
+[ext_resource type="Texture2D" uid="uid://jb3e1trkqs1s" path="res://Assets/Mountains.png" id="4_gccv3"]
+[ext_resource type="Texture2D" uid="uid://bqvtxqfwq2ls2" path="res://Assets/Cloud.png" id="5_kl4ni"]
+[ext_resource type="Script" path="res://ToLevel3.gd" id="6_btpsg"]
+[ext_resource type="Script" path="res://UI/PauseControl.gd" id="7_2slp3"]
+[ext_resource type="PackedScene" uid="uid://cg0727rhc8b7p" path="res://UI/PauseMenu.tscn" id="8_a6bje"]
+[ext_resource type="Script" path="res://HUD.gd" id="9_57kq7"]
+[ext_resource type="AudioStream" uid="uid://bn10u0lx4l5jl" path="res://Audio/Music/Ofer Koren - Wok like a Cowboy.mp3" id="10_n155d"]
+[ext_resource type="Script" path="res://RestarScene.gd" id="11_876bg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jrcp3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqwjm"]
+size = Vector2(938, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v8y5"]
+size = Vector2(938, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8xlt"]
+size = Vector2(74, 1602)
+
+[node name="Level2" type="Node2D"]
+
+[node name="Platforms" type="Node2D" parent="."]
+position = Vector2(720, 696)
+scale = Vector2(1, 1.00715)
+script = ExtResource("1_e6wb0")
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("2_01url")]
+position = Vector2(-16, 222.41)
+
+[node name="Platform11" parent="Platforms" instance=ExtResource("2_01url")]
+position = Vector2(-504, 158.864)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("2_01url")]
+position = Vector2(-136, 47.6592)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("2_01url")]
+position = Vector2(-432, -206.523)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("2_01url")]
+position = Vector2(-552, -373.331)
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("2_01url")]
+position = Vector2(-496, 706.945)
+
+[node name="Platform9" parent="Platforms" instance=ExtResource("2_01url")]
+position = Vector2(80, -150.921)
+
+[node name="Platform10" parent="Platforms" instance=ExtResource("2_01url")]
+position = Vector2(-448, 373.331)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("2_01url")]
+position = Vector2(-144, 611.627)
+scale = Vector2(1, 0.985862)
+
+[node name="SanMartin" parent="." instance=ExtResource("3_4r2hi")]
+position = Vector2(256, 1256)
+scale = Vector2(0.347756, 0.347756)
+
+[node name="Area2D" type="Area2D" parent="SanMartin"]
+position = Vector2(-69.0139, 1472.3)
+scale = Vector2(184.187, 6.88083)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SanMartin/Area2D"]
+shape = SubResource("RectangleShape2D_jrcp3")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="MountainParalax" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MountainParalax"]
+scale = Vector2(0.984739, 0.987427)
+texture = ExtResource("4_gccv3")
+centered = false
+
+[node name="Cloud" type="Sprite2D" parent="ParallaxBackground"]
+texture_filter = 1
+position = Vector2(112, 688)
+scale = Vector2(0.188998, 0.188998)
+texture = ExtResource("5_kl4ni")
+centered = false
+
+[node name="Cloud2" type="Sprite2D" parent="ParallaxBackground"]
+texture_filter = 1
+position = Vector2(80, 216)
+scale = Vector2(0.188998, 0.188998)
+texture = ExtResource("5_kl4ni")
+centered = false
+
+[node name="Cloud3" type="Sprite2D" parent="ParallaxBackground"]
+texture_filter = 1
+position = Vector2(496, 488)
+scale = Vector2(0.188998, 0.188998)
+texture = ExtResource("5_kl4ni")
+centered = false
+
+[node name="NextLevelColider" type="Area2D" parent="."]
+position = Vector2(80, 0)
+scale = Vector2(0.836641, 0.728957)
+script = ExtResource("6_btpsg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevelColider"]
+position = Vector2(467, 43)
+shape = SubResource("RectangleShape2D_wqwjm")
+
+[node name="RestarCollider" type="Area2D" parent="."]
+position = Vector2(80, 1520)
+scale = Vector2(0.833332, 0.899783)
+script = ExtResource("11_876bg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RestarCollider"]
+position = Vector2(467, 43)
+shape = SubResource("RectangleShape2D_3v8y5")
+
+[node name="PauseControl" type="Node2D" parent="."]
+script = ExtResource("7_2slp3")
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+
+[node name="PopupMenu" parent="." instance=ExtResource("8_a6bje")]
+visible = false
+
+[node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("9_57kq7")
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pause" type="Button" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.308642
+anchor_top = -0.0416667
+anchor_right = -0.308642
+anchor_bottom = -0.0416667
+offset_left = 696.0
+offset_top = 96.0
+offset_right = 726.0
+offset_bottom = 127.0
+grow_horizontal = 0
+scale = Vector2(3.97399, 3.03843)
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "| |"
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" type="Control" parent="HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 288.0
+offset_top = 656.0
+offset_right = 328.0
+offset_bottom = 696.0
+
+[node name="ColorRect" type="ColorRect" parent="HUD/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.32549)
+
+[node name="Control" type="Control" parent="HUD/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD/PauseMenu/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD/PauseMenu/Control/CenterContainer"]
+custom_minimum_size = Vector2(280, 400)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PauseMenu/Control/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PauseMenu/Control/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="Label" type="Label" parent="HUD/PauseMenu/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PAUSE"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HUD/PauseMenu/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="HUD/PauseMenu/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "RESUME"
+
+[node name="MainMenu" type="Button" parent="HUD/PauseMenu/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "MAIN MENU"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_n155d")
+autoplay = true
+bus = &"Music"
+
+[node name="Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(27, 791)
+shape = SubResource("RectangleShape2D_v8xlt")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(880, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+position = Vector2(27, 791)
+shape = SubResource("RectangleShape2D_v8xlt")
+
+[connection signal="body_entered" from="SanMartin/Area2D" to="SanMartin" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="NextLevelColider" to="NextLevelColider" method="_on_body_entered"]
+[connection signal="body_entered" from="RestarCollider" to="RestarCollider" method="_on_body_entered"]
+[connection signal="pressed" from="HUD/Control/Pause" to="HUD" method="_on_pause_pressed"]
+[connection signal="pressed" from="HUD/PauseMenu/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Resume" to="HUD" method="_on_resume_pressed"]
+[connection signal="pressed" from="HUD/PauseMenu/Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MainMenu" to="HUD" method="_on_main_menu_pressed"]

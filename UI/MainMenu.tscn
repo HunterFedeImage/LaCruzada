@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://ybaqaiopd4dh"]
+
+[ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_gwf7u"]
+[ext_resource type="StyleBox" uid="uid://bd3u6v00qf74u" path="res://UI/ButtonBack.tres" id="2_ax23p"]
+[ext_resource type="Texture2D" uid="uid://bsxvkad7tgmpx" path="res://Assets/Mountain2.png" id="2_gsmiu"]
+[ext_resource type="Texture2D" uid="uid://cxbdu5s1yl5uq" path="res://Assets/CruzadaLogoCortado.png" id="4_sjouh"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gwf7u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.141176, 0.121569, 0.121569, 1)
+
+[node name="Mountain2" type="Sprite2D" parent="."]
+position = Vector2(344, 576)
+scale = Vector2(1.47636, 2.46635)
+texture = ExtResource("2_gsmiu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = -192.0
+offset_right = -157.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6.19025, 5.38056)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PLAY" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.952941, 0.713726, 0.101961, 1)
+theme_override_colors/icon_normal_color = Color(0.738281, 0.46875, 0.21875, 1)
+theme_override_styles/normal = ExtResource("2_ax23p")
+text = "PLAY"
+
+[node name="OPTIONS" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.952941, 0.713726, 0.101961, 1)
+theme_override_styles/normal = ExtResource("2_ax23p")
+text = "OPTIONS"
+
+[node name="CREDITS" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.952941, 0.713726, 0.101961, 1)
+theme_override_styles/normal = ExtResource("2_ax23p")
+text = "CREDITS"
+
+[node name="QUIT" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.952941, 0.713726, 0.101961, 1)
+theme_override_styles/normal = ExtResource("2_ax23p")
+text = "QUIT"
+
+[node name="CruzadaLogoCortado" type="Sprite2D" parent="."]
+position = Vector2(328, 64)
+scale = Vector2(2.48086, 3.73325)
+texture = ExtResource("4_sjouh")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PLAY" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/OPTIONS" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CREDITS" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QUIT" to="." method="_on_quit_pressed"]

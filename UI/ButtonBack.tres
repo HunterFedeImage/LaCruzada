@@ -1,0 +1,7 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bd3u6v00qf74u"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5bsqe"]
+
+[resource]
+texture = SubResource("CanvasTexture_5bsqe")
+modulate_color = Color(0.738281, 0.46875, 0.21875, 1)

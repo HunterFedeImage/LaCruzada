@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw4nuaer7quno"]
+
+[ext_resource type="Script" path="res://UI/Credits.gd" id="1_j48gp"]
+[ext_resource type="StyleBox" uid="uid://bd3u6v00qf74u" path="res://UI/ButtonBack.tres" id="2_18r3x"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j48gp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.141176, 0.121569, 0.121569, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = -184.0
+offset_right = -59.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(4.3602, 3.09389)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Menu" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.952941, 0.713726, 0.101961, 1)
+theme_override_styles/normal = ExtResource("2_18r3x")
+text = "MENU"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -208.0
+offset_right = 224.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00477, 1)
+theme_override_font_sizes/font_size = 50
+text = "CREATED BY
+FEDERICO COPOLA"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]

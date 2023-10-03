@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://2vvt3kvahn4h"]
+
+[ext_resource type="Script" path="res://SanMartin.gd" id="1_dm8rc"]
+[ext_resource type="Texture2D" uid="uid://bntcchgvf8l6g" path="res://Assets/PixelSanMartin.png" id="1_x835w"]
+[ext_resource type="Script" path="res://SanMartinCamera.gd" id="3_gc3pq"]
+[ext_resource type="AudioStream" uid="uid://tvyv2qwihlns" path="res://Audio/SFX/fast-simple-chop-5-6270.mp3" id="4_4wpu7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wuvaf"]
+size = Vector2(238, 260)
+
+[node name="SanMartinBody" type="CharacterBody2D" groups=["SanMartin"]]
+script = ExtResource("1_dm8rc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x835w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14, 0)
+shape = SubResource("RectangleShape2D_wuvaf")
+
+[node name="SanMartinCamera" type="Camera2D" parent="."]
+position = Vector2(-28, -290)
+limit_left = 70
+limit_top = -1000
+limit_right = 870
+limit_bottom = 5000
+script = ExtResource("3_gc3pq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4wpu7")
+bus = &"SFX"
